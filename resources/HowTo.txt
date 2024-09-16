@@ -1,10 +1,10 @@
-*Start the reverse proxy:
+Start the reverse proxy:
   caddy run --config /Path/To/Caddyfile
 
-*Setup fluent-bit:
+Setup fluent-bit:
   fluent-bit -c /Path/To/fluent-bit.conf
 
-*Build the GO app:
+Build the GO app:
   go build -o ids_app main.go
 ./ids_app
 
