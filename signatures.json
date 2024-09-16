@@ -1,0 +1,13 @@
+[
+    {
+      "id": "SIG001",
+      "description": "SQL Injection Attempt",
+      "patterns": ["' OR 1=1", "' DROP TABLE", "--"]
+    },
+    {
+      "id": "SIG002",
+      "description": "XSS Attempt",
+      "patterns": ["<script>", "javascript:"]
+    }
+  ]
+  
