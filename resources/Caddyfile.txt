@@ -1,0 +1,39 @@
+{
+    # Enable global debug logging
+    debug
+
+    # Global logging options
+    log {
+        output file /Users/coltoncurtis/webflow-ids/logs/access.json # Change this to the desired log file
+        format json {
+            time_format iso8601
+        }
+        level DEBUG # Log level set to DEBUG to capture all relevant logs
+    }
+}
+
+# Replace testdomain.com with your actual domain
+testdomain.com {
+    # Reverse proxy settings for Webflow
+    reverse_proxy http://swimteam.webflow.io {
+        header_up Host swimteam.webflow.io # Send the original host header to Webflow
+    }
+
+    # Enable internal TLS
+    tls internal
+
+    # Site-specific logging configuration
+    log {
+        output file /Users/coltoncurtis/webflow-ids/logs/access.json # Ensure this matches the global log file
+        format json {
+            time_format iso8601
+        }
+        level DEBUG # Set log level to DEBUG for detailed logs
+    }
+
+    # Optional: set up additional request rate limiting or IP blocking (IDS-controlled)
+    @block_ips {
+        remote_ip 192.168.1.100 # Example IP to block (update dynamically)
+    }
+    respond @block_ips 403 # Return a 403 forbidden status for blocked IPs
+}
